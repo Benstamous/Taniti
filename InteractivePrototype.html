@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Taniti - Your Pacific Paradise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: #ffd700;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .nav-item a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffd700;
+        }
+        
+        .book-now {
+            background: #ff6b35 !important;
+            padding: 0.7rem 1.5rem !important;
+            border-radius: 25px !important;
+            font-weight: bold !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .book-now:hover {
+            background: #ff5722 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Mobile menu toggle */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('TanitiBackgroundImage.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .cta-button {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-button:hover {
+            background: #ff5722;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Quick Info Section */
+        .quick-info {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #2c5aa0;
+        }
+        
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .info-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* Activities Section */
+        .activities {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #4CAF50, #81C784);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .activity-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .learn-more {
+            background: #2c5aa0;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+        
+        .learn-more:hover {
+            background: #1e3d6f;
+            transform: translateY(-2px);
+        }
+        
+        /* Planning Section */
+        .planning {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        
+        .planning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .planning-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .planning-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .planning-list {
+            list-style: none;
+        }
+        
+        .planning-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+        
+        .planning-list li:hover {
+            color: #2c5aa0;
+        }
+        
+        .planning-list li:before {
+            content: "✓ ";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+        
+        .email-input {
+            width: 100%;
+            padding: 0.7rem;
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background: #555;
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #2c5aa0;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .info-grid,
+            .activities-grid,
+            .planning-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Interactive elements */
+        .clickable {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .clickable:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#home" class="logo"><img src="IconImg.png" width="100px"/></a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item"><a href="#activities">Activities</a></li>
+                    <li class="nav-item"><a href="#planning">Stay</a></li>
+                    <li class="nav-item"><a href="#planning">Plan</a></li>
+                    <li class="nav-item"><a href="#footer">About</a></li>
+                    <li class="nav-item"><a href="#booking" class="book-now">Book Now</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Paradise on Taniti Island</h1>
+            <p>Volcanic adventures • Pristine beaches • Tropical rainforest<br>Your perfect Pacific getaway awaits</p>
+            <a href="#planning" class="cta-button">Plan Your Visit</a>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card clickable" onclick="showModal('transport')">
+                    <div class="info-icon">✈️</div>
+                    <h3>Getting Here</h3>
+                    <p>Daily flights from major cities<br>Weekly cruise ships<br>Small airport expanding soon</p>
+                </div>
+                <div class="info-card clickable" onclick="showModal('accommodation')">
+                    <div class="info-icon">🏨</div>
+                    <h3>Where to Stay</h3>
+                    <p>4-star resort to budget hostels<br>Family hotels & B&Bs<br>All government inspected</p>
+                </div>
+                <div class="info-card clickable" onclick="showModal('attractions')">
+                    <div class="info-icon">🌋</div>
+                    <h3>Top Attractions</h3>
+                    <p>Active volcano tours<br>Rainforest zip-lining<br>Pristine beach activities</p>
+                </div>
+                <div class="info-card clickable" onclick="showModal('transportation')">
+                    <div class="info-icon">🚗</div>
+                    <h3>Getting Around</h3>
+                    <p>Rental cars available<br>Public bus system<br>Bikes, taxis & walking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities">
+        <div class="container">
+            <h2 class="section-title">What to Do on Taniti</h2>
+            <div class="activities-grid">
+                <div class="activity-card" onclick="activityDetails('volcano')">
+                    <div class="activity-image">
+                        <img src="VolcanoImg.png" width=100%/>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Volcano Adventure</h3>
+                        <p>Explore our active volcano with expert guides. Safe viewing points and educational tours about volcanic geology and local legends.</p>
+                        <a href="#" class="learn-more" onclick="activityDetails('volcano')">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="activity-card" onclick="activityDetails('beach')">
+                    <div class="activity-image">
+                        <img src="BeachImg.png" width=100%/>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Beach Paradise</h3>
+                        <p>White sandy beaches around Yellow Leaf Bay. Perfect for swimming, snorkeling, and watching spectacular sunsets.</p>
+                        <a href="#" class="learn-more" onclick="activityDetails('beach')">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="activity-card" onclick="activityDetails('rainforest')">
+                    <div class="activity-image">
+                        <img src="RainforestImg.png" width=100%/>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Rainforest Exploration</h3>
+                        <p>Zip-line through tropical canopy, hiking trails, and guided eco-tours. Discover exotic wildlife and lush vegetation.</p>
+                        <a href="#" class="learn-more" onclick="activityDetails('rainforest')">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="activity-card" onclick="activityDetails('fishing')">
+                    <div class="activity-image">
+                        <img src="FishingImg.png" width=100%/>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Fishing Tours</h3>
+                        <p>Chartered fishing trips in our safe harbor. Experience traditional Tanitian fishing methods and enjoy fresh catch.</p>
+                        <a href="#" class="learn-more" onclick="activityDetails('fishing')">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="activity-card" onclick="activityDetails('culture')">
+                    <div class="activity-image">
+                        <img src="CultureImg.png" width=100%/>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Local Culture</h3>
+                        <p>Visit our history museum, art galleries, and experience native architecture in historic Taniti City.</p>
+                        <a href="#" class="learn-more" onclick="activityDetails('culture')">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="activity-card" onclick="activityDetails('entertainment')">
+                    <div class="activity-image">
+                        <img src="ArcadeImg.png" width=100%/>
+                    </div>
+                    <div class="activity-content">
+                        <h3>Entertainment</h3>
+                        <p>Vibrant nightlife in Merriton Landing: pubs, microbrewery, dance club, arcade, bowling, and more.</p>
+                        <a href="#" class="learn-more" onclick="activityDetails('entertainment')">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planning Section -->
+    <section id="planning" class="planning">
+        <div class="container">
+            <h2 class="section-title">Plan Your Perfect Visit</h2>
+            <div class="planning-grid">
+                <div class="planning-box">
+                    <h3>Essential Information</h3>
+                    <ul class="planning-list">
+                        <li>Currency: US Dollar (EUR/YEN accepted)</li>
+                        <li>Language: English widely spoken</li>
+                        <li>Power: 120V (US standard outlets)</li>
+                        <li>Safety: Very low crime, hospital available</li>
+                        <li>Drinking age: 18 years</li>
+                        <li>Many national holidays - check calendar</li>
+                    </ul>
+                </div>
+                <div class="planning-box">
+                    <h3>Accommodation Options</h3>
+                    <ul class="planning-list">
+                        <li>4-star luxury resort with full amenities</li>
+                        <li>Family-owned hotels (most popular choice)</li>
+                        <li>Charming bed & breakfasts</li>
+                        <li>Budget-friendly hostel for backpackers</li>
+                        <li>All accommodations regularly inspected</li>
+                        <li>Book early for best availability</li>
+                    </ul>
+                </div>
+                <div class="planning-box">
+                    <h3>Dining Options</h3>
+                    <ul class="planning-list">
+                        <li>5 local restaurants (fresh fish & rice)</li>
+                        <li>3 American-style dining establishments</li>
+                        <li>2 Pan-Asian cuisine restaurants</li>
+                        <li>2 supermarkets & smaller grocery stores</li>
+                        <li>24-hour convenience store</li>
+                        <li>Local microbrewery in Merriton Landing</li>
+                    </ul>
+                </div>
+                <div class="planning-box">
+                    <h3>Transportation</h3>
+                    <ul class="planning-list">
+                        <li>Public buses: 5am-11pm daily service</li>
+                        <li>Rental cars available near airport</li>
+                        <li>Taxis available in Taniti City</li>
+                        <li>Bike rentals (helmets required by law)</li>
+                        <li>Taniti City & Merriton Landing walkable</li>
+                        <li>Private buses serve rural island areas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Contact & Booking</h4>
+                    <p>📧 info@visittaniti.com</p>
+                    <p>📞 +1-800-TANITI (826-4841)</p>
+                    <p>Emergency? 📞 +1-800-HELPME! (324-6520)</p>
+                    <p>🗺️ Tourism Office<br>Main Street, Taniti City<br>Pacific Ocean</p>
+                    <a href="#booking" onclick="openBooking()">Book Your Trip</a>
+                    <a href="#packages" onclick="showPackages()">Travel Packages</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#" onclick="showInfo('airport')">Airport Information</a>
+                    <a href="#" onclick="showInfo('weather')">Weather & Climate</a>
+                    <a href="#" onclick="showInfo('health')">Health & Safety</a>
+                    <a href="#" onclick="showInfo('map')">Interactive Island Map</a>
+                    <a href="#" onclick="showInfo('events')">Event Calendar</a>
+                    <a href="#" onclick="showInfo('insurance')">Travel Insurance</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Taniti</h4>
+                    <p>Stay connected for latest updates</p>
+                    <a href="#" onclick="openSocial('facebook')">Facebook</a>
+                    <a href="#" onclick="openSocial('instagram')">Instagram</a>
+                    <a href="#" onclick="openSocial('youtube')">YouTube Virtual Tours</a>
+                    <p style="margin-top: 1rem;">📰 Newsletter Signup</p>
+                    <input type="email" class="email-input" placeholder="Enter your email for updates" onclick="newsletterSignup()">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Visit Taniti Tourism Board. All rights reserved. | <a href="#" onclick="showInfo('privacy')">Privacy Policy</a> | <a href="#" onclick="showInfo('terms')">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Interactive functions
+        function showModal(type) {
+            alert(`${type.toUpperCase()} INFORMATION:\n\nThis is where detailed information about ${type} will be.`);
+        }
+
+        function activityDetails(activity) {
+            alert(`${activity.toUpperCase()} DETAILS:\n\nThis would navigate to a detailed page about ${activity} activities.`);
+        }
+
+        function openBooking() {
+            alert('BOOKING SYSTEM:\n\nThis would open booking system or navigate to a booking page.');
+        }
+
+        function showPackages() {
+            alert('TRAVEL PACKAGES:\n\nThis would display available travel packages as applicable.');
+        }
+
+        function showInfo(topic) {
+            alert(`${topic.toUpperCase()} INFORMATION:\n\nThis would display information about ${topic}.`);
+        }
+
+        function openSocial(platform) {
+            alert(`SOCIAL MEDIA:\n\nThis would open ${platform} in a new tab.`);
+        }
+
+        function newsletterSignup() {
+            alert('NEWSLETTER SIGNUP:\n\nThis would open a newsletter signup form.');
+        }
+
+        // scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 90, 160, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%)';
+            }
+        });
+
+        // fade-in animation for cards when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.info-card, .activity-card, .planning-box');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
